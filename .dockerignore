@@ -1,0 +1,13 @@
+.git
+.gitignore
+.pre-commit-config.yaml
+CLAUDE.md
+README.md
+schema_musica_local.sql
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.encrypted.env
+*.env
+__pycache__
+*.pyc

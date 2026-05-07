@@ -1,0 +1,13 @@
+services:
+  bot:
+    build: .
+    volumes:
+      # SQLite database (read-only)
+      - ${DB_PATH:-/home/huan/gits/pollo/music-fuzzy/musica_local.sqlite}:/data/musica_local.sqlite:ro
+      # SOPS-encrypted credentials
+      - ${ENCRYPTED_ENV:-/home/huan/gits/pollo/bot_infomusic/.encrypted.env}:/app/.encrypted.env:ro
+      # age private key for SOPS decryption
+      - ${AGE_KEY_FILE:-/home/huan/.config/sops/age/keys.txt}:/root/.config/sops/age/keys.txt:ro
+    environment:
+      DB_PATH: /data/musica_local.sqlite
+    restart: unless-stopped
